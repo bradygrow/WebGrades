@@ -1,0 +1,1331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.radford.edu/NewGrader" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.radford.edu/NewGrader" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">provides Gradebook information to any platform</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.radford.edu/NewGrader">
+      <s:element name="logIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strRole" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="logInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="logInResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="logOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strToken" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="logOutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="logOutResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="saveStudent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_savemode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_student" type="tns:Student" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Student">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="firstname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lastname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="notes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="middleinitial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="studentData">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="studentEnrollments">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="dbmessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="saveStudentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="saveStudentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCourseOfferingsList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_mode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCourseOfferingsListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCourseOfferingsListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCourseList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCourseListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCourseListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTermList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTermListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTermListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCourseOffering">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="p_offeringid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCourseOfferingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCourseOfferingResult" type="tns:CourseOffering" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CourseOffering">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="courseNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="courseName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="semester" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="notes" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="offeringID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="sectionNo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="courseOfferingData">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="courseOfferingStudents">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="courseOfferingTasks">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="dbmessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="findStudent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_searchstring" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findStudentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findStudentResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getStudent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_sid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getStudentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getStudentResult" type="tns:Student" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getStudentClassPerformance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_sid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="p_offeringid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getStudentClassPerformanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getStudentClassPerformanceResult" type="tns:StudentClassPerformance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="StudentClassPerformance">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gradeOption" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="grade" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="courseNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="courseName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="semester" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sectionNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="location" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="enrollmentNotes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="offeringNickname" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="offeringID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="studentEnrollmentData">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="studentGrades">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="studentGradeSummary">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="studentAttendance">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="stuAttendanceSummary">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="dbmessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="p_taskid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTaskResult" type="tns:Task" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Task">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="taskType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="offeringID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="maxPoints" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="curvePoints" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TaskRubricParts">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="dbmessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getStudentTaskGrade">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_sid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="p_taskid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getStudentTaskGradeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getStudentTaskGradeResult" type="tns:StudentTaskGrade" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="StudentTaskGrade">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="taskType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dropped" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="maxPoints" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="pointsEarned" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="curvePoints" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="pointsAssigned" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="percentageAssigned" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="studentGradeData">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="studentGradeRubricGrades">
+            <s:complexType>
+              <s:sequence>
+                <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="dbmessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="changeInstructorPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oldPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="securityToken" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="changeInstructorPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="changeInstructorPasswordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CourseOffering" nillable="true" type="tns:CourseOffering" />
+      <s:element name="Student" nillable="true" type="tns:Student" />
+      <s:element name="StudentClassPerformance" nillable="true" type="tns:StudentClassPerformance" />
+      <s:element name="Task" nillable="true" type="tns:Task" />
+      <s:element name="StudentTaskGrade" nillable="true" type="tns:StudentTaskGrade" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="logInSoapIn">
+    <wsdl:part name="parameters" element="tns:logIn" />
+  </wsdl:message>
+  <wsdl:message name="logInSoapOut">
+    <wsdl:part name="parameters" element="tns:logInResponse" />
+  </wsdl:message>
+  <wsdl:message name="logOutSoapIn">
+    <wsdl:part name="parameters" element="tns:logOut" />
+  </wsdl:message>
+  <wsdl:message name="logOutSoapOut">
+    <wsdl:part name="parameters" element="tns:logOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="saveStudentSoapIn">
+    <wsdl:part name="parameters" element="tns:saveStudent" />
+  </wsdl:message>
+  <wsdl:message name="saveStudentSoapOut">
+    <wsdl:part name="parameters" element="tns:saveStudentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCourseOfferingsListSoapIn">
+    <wsdl:part name="parameters" element="tns:getCourseOfferingsList" />
+  </wsdl:message>
+  <wsdl:message name="getCourseOfferingsListSoapOut">
+    <wsdl:part name="parameters" element="tns:getCourseOfferingsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCourseListSoapIn">
+    <wsdl:part name="parameters" element="tns:getCourseList" />
+  </wsdl:message>
+  <wsdl:message name="getCourseListSoapOut">
+    <wsdl:part name="parameters" element="tns:getCourseListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTermListSoapIn">
+    <wsdl:part name="parameters" element="tns:getTermList" />
+  </wsdl:message>
+  <wsdl:message name="getTermListSoapOut">
+    <wsdl:part name="parameters" element="tns:getTermListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCourseOfferingSoapIn">
+    <wsdl:part name="parameters" element="tns:getCourseOffering" />
+  </wsdl:message>
+  <wsdl:message name="getCourseOfferingSoapOut">
+    <wsdl:part name="parameters" element="tns:getCourseOfferingResponse" />
+  </wsdl:message>
+  <wsdl:message name="findStudentSoapIn">
+    <wsdl:part name="parameters" element="tns:findStudent" />
+  </wsdl:message>
+  <wsdl:message name="findStudentSoapOut">
+    <wsdl:part name="parameters" element="tns:findStudentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getStudentSoapIn">
+    <wsdl:part name="parameters" element="tns:getStudent" />
+  </wsdl:message>
+  <wsdl:message name="getStudentSoapOut">
+    <wsdl:part name="parameters" element="tns:getStudentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getStudentClassPerformanceSoapIn">
+    <wsdl:part name="parameters" element="tns:getStudentClassPerformance" />
+  </wsdl:message>
+  <wsdl:message name="getStudentClassPerformanceSoapOut">
+    <wsdl:part name="parameters" element="tns:getStudentClassPerformanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:getTask" />
+  </wsdl:message>
+  <wsdl:message name="getTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:getTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="getStudentTaskGradeSoapIn">
+    <wsdl:part name="parameters" element="tns:getStudentTaskGrade" />
+  </wsdl:message>
+  <wsdl:message name="getStudentTaskGradeSoapOut">
+    <wsdl:part name="parameters" element="tns:getStudentTaskGradeResponse" />
+  </wsdl:message>
+  <wsdl:message name="changeInstructorPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:changeInstructorPassword" />
+  </wsdl:message>
+  <wsdl:message name="changeInstructorPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:changeInstructorPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="logInHttpGetIn">
+    <wsdl:part name="strUsername" type="s:string" />
+    <wsdl:part name="strPassword" type="s:string" />
+    <wsdl:part name="strRole" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="logInHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="logOutHttpGetIn">
+    <wsdl:part name="strToken" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="logOutHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getCourseOfferingsListHttpGetIn">
+    <wsdl:part name="p_mode" type="s:string" />
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getCourseOfferingsListHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getCourseListHttpGetIn">
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getCourseListHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getTermListHttpGetIn">
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getTermListHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getCourseOfferingHttpGetIn">
+    <wsdl:part name="p_offeringid" type="s:string" />
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getCourseOfferingHttpGetOut">
+    <wsdl:part name="Body" element="tns:CourseOffering" />
+  </wsdl:message>
+  <wsdl:message name="findStudentHttpGetIn">
+    <wsdl:part name="p_searchstring" type="s:string" />
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="findStudentHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getStudentHttpGetIn">
+    <wsdl:part name="p_sid" type="s:string" />
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getStudentHttpGetOut">
+    <wsdl:part name="Body" element="tns:Student" />
+  </wsdl:message>
+  <wsdl:message name="getStudentClassPerformanceHttpGetIn">
+    <wsdl:part name="p_sid" type="s:string" />
+    <wsdl:part name="p_offeringid" type="s:string" />
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getStudentClassPerformanceHttpGetOut">
+    <wsdl:part name="Body" element="tns:StudentClassPerformance" />
+  </wsdl:message>
+  <wsdl:message name="getTaskHttpGetIn">
+    <wsdl:part name="p_taskid" type="s:string" />
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getTaskHttpGetOut">
+    <wsdl:part name="Body" element="tns:Task" />
+  </wsdl:message>
+  <wsdl:message name="getStudentTaskGradeHttpGetIn">
+    <wsdl:part name="p_sid" type="s:string" />
+    <wsdl:part name="p_taskid" type="s:string" />
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getStudentTaskGradeHttpGetOut">
+    <wsdl:part name="Body" element="tns:StudentTaskGrade" />
+  </wsdl:message>
+  <wsdl:message name="changeInstructorPasswordHttpGetIn">
+    <wsdl:part name="oldPassword" type="s:string" />
+    <wsdl:part name="newPassword" type="s:string" />
+    <wsdl:part name="securityToken" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="changeInstructorPasswordHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="logInHttpPostIn">
+    <wsdl:part name="strUsername" type="s:string" />
+    <wsdl:part name="strPassword" type="s:string" />
+    <wsdl:part name="strRole" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="logInHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="logOutHttpPostIn">
+    <wsdl:part name="strToken" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="logOutHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getCourseOfferingsListHttpPostIn">
+    <wsdl:part name="p_mode" type="s:string" />
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getCourseOfferingsListHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getCourseListHttpPostIn">
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getCourseListHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getTermListHttpPostIn">
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getTermListHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getCourseOfferingHttpPostIn">
+    <wsdl:part name="p_offeringid" type="s:string" />
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getCourseOfferingHttpPostOut">
+    <wsdl:part name="Body" element="tns:CourseOffering" />
+  </wsdl:message>
+  <wsdl:message name="findStudentHttpPostIn">
+    <wsdl:part name="p_searchstring" type="s:string" />
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="findStudentHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getStudentHttpPostIn">
+    <wsdl:part name="p_sid" type="s:string" />
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getStudentHttpPostOut">
+    <wsdl:part name="Body" element="tns:Student" />
+  </wsdl:message>
+  <wsdl:message name="getStudentClassPerformanceHttpPostIn">
+    <wsdl:part name="p_sid" type="s:string" />
+    <wsdl:part name="p_offeringid" type="s:string" />
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getStudentClassPerformanceHttpPostOut">
+    <wsdl:part name="Body" element="tns:StudentClassPerformance" />
+  </wsdl:message>
+  <wsdl:message name="getTaskHttpPostIn">
+    <wsdl:part name="p_taskid" type="s:string" />
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getTaskHttpPostOut">
+    <wsdl:part name="Body" element="tns:Task" />
+  </wsdl:message>
+  <wsdl:message name="getStudentTaskGradeHttpPostIn">
+    <wsdl:part name="p_sid" type="s:string" />
+    <wsdl:part name="p_taskid" type="s:string" />
+    <wsdl:part name="p_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getStudentTaskGradeHttpPostOut">
+    <wsdl:part name="Body" element="tns:StudentTaskGrade" />
+  </wsdl:message>
+  <wsdl:message name="changeInstructorPasswordHttpPostIn">
+    <wsdl:part name="oldPassword" type="s:string" />
+    <wsdl:part name="newPassword" type="s:string" />
+    <wsdl:part name="securityToken" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="changeInstructorPasswordHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="NewGraderInfoServiceSoap">
+    <wsdl:operation name="logIn">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">authenticate user and return token</wsdl:documentation>
+      <wsdl:input message="tns:logInSoapIn" />
+      <wsdl:output message="tns:logInSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="logOut">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">end session</wsdl:documentation>
+      <wsdl:input message="tns:logOutSoapIn" />
+      <wsdl:output message="tns:logOutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="saveStudent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">save a new student object or update an old one, savemode = INSERT or UPDATE</wsdl:documentation>
+      <wsdl:input message="tns:saveStudentSoapIn" />
+      <wsdl:output message="tns:saveStudentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCourseOfferingsList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">return list of course offerings</wsdl:documentation>
+      <wsdl:input message="tns:getCourseOfferingsListSoapIn" />
+      <wsdl:output message="tns:getCourseOfferingsListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCourseList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">return list of courses</wsdl:documentation>
+      <wsdl:input message="tns:getCourseListSoapIn" />
+      <wsdl:output message="tns:getCourseListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTermList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">return list of semesters</wsdl:documentation>
+      <wsdl:input message="tns:getTermListSoapIn" />
+      <wsdl:output message="tns:getTermListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCourseOffering">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get a CourseOffering object</wsdl:documentation>
+      <wsdl:input message="tns:getCourseOfferingSoapIn" />
+      <wsdl:output message="tns:getCourseOfferingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findStudent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">search for a Student</wsdl:documentation>
+      <wsdl:input message="tns:findStudentSoapIn" />
+      <wsdl:output message="tns:findStudentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStudent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get a Student object</wsdl:documentation>
+      <wsdl:input message="tns:getStudentSoapIn" />
+      <wsdl:output message="tns:getStudentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStudentClassPerformance">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get a StudentClassPerformance object</wsdl:documentation>
+      <wsdl:input message="tns:getStudentClassPerformanceSoapIn" />
+      <wsdl:output message="tns:getStudentClassPerformanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTask">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get a Task object</wsdl:documentation>
+      <wsdl:input message="tns:getTaskSoapIn" />
+      <wsdl:output message="tns:getTaskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStudentTaskGrade">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get a StudentTaskGrade object</wsdl:documentation>
+      <wsdl:input message="tns:getStudentTaskGradeSoapIn" />
+      <wsdl:output message="tns:getStudentTaskGradeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="changeInstructorPassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Change the instructor password</wsdl:documentation>
+      <wsdl:input message="tns:changeInstructorPasswordSoapIn" />
+      <wsdl:output message="tns:changeInstructorPasswordSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="NewGraderInfoServiceHttpGet">
+    <wsdl:operation name="logIn">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">authenticate user and return token</wsdl:documentation>
+      <wsdl:input message="tns:logInHttpGetIn" />
+      <wsdl:output message="tns:logInHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="logOut">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">end session</wsdl:documentation>
+      <wsdl:input message="tns:logOutHttpGetIn" />
+      <wsdl:output message="tns:logOutHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCourseOfferingsList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">return list of course offerings</wsdl:documentation>
+      <wsdl:input message="tns:getCourseOfferingsListHttpGetIn" />
+      <wsdl:output message="tns:getCourseOfferingsListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCourseList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">return list of courses</wsdl:documentation>
+      <wsdl:input message="tns:getCourseListHttpGetIn" />
+      <wsdl:output message="tns:getCourseListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTermList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">return list of semesters</wsdl:documentation>
+      <wsdl:input message="tns:getTermListHttpGetIn" />
+      <wsdl:output message="tns:getTermListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCourseOffering">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get a CourseOffering object</wsdl:documentation>
+      <wsdl:input message="tns:getCourseOfferingHttpGetIn" />
+      <wsdl:output message="tns:getCourseOfferingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findStudent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">search for a Student</wsdl:documentation>
+      <wsdl:input message="tns:findStudentHttpGetIn" />
+      <wsdl:output message="tns:findStudentHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStudent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get a Student object</wsdl:documentation>
+      <wsdl:input message="tns:getStudentHttpGetIn" />
+      <wsdl:output message="tns:getStudentHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStudentClassPerformance">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get a StudentClassPerformance object</wsdl:documentation>
+      <wsdl:input message="tns:getStudentClassPerformanceHttpGetIn" />
+      <wsdl:output message="tns:getStudentClassPerformanceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTask">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get a Task object</wsdl:documentation>
+      <wsdl:input message="tns:getTaskHttpGetIn" />
+      <wsdl:output message="tns:getTaskHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStudentTaskGrade">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get a StudentTaskGrade object</wsdl:documentation>
+      <wsdl:input message="tns:getStudentTaskGradeHttpGetIn" />
+      <wsdl:output message="tns:getStudentTaskGradeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="changeInstructorPassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Change the instructor password</wsdl:documentation>
+      <wsdl:input message="tns:changeInstructorPasswordHttpGetIn" />
+      <wsdl:output message="tns:changeInstructorPasswordHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="NewGraderInfoServiceHttpPost">
+    <wsdl:operation name="logIn">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">authenticate user and return token</wsdl:documentation>
+      <wsdl:input message="tns:logInHttpPostIn" />
+      <wsdl:output message="tns:logInHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="logOut">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">end session</wsdl:documentation>
+      <wsdl:input message="tns:logOutHttpPostIn" />
+      <wsdl:output message="tns:logOutHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCourseOfferingsList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">return list of course offerings</wsdl:documentation>
+      <wsdl:input message="tns:getCourseOfferingsListHttpPostIn" />
+      <wsdl:output message="tns:getCourseOfferingsListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCourseList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">return list of courses</wsdl:documentation>
+      <wsdl:input message="tns:getCourseListHttpPostIn" />
+      <wsdl:output message="tns:getCourseListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTermList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">return list of semesters</wsdl:documentation>
+      <wsdl:input message="tns:getTermListHttpPostIn" />
+      <wsdl:output message="tns:getTermListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCourseOffering">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get a CourseOffering object</wsdl:documentation>
+      <wsdl:input message="tns:getCourseOfferingHttpPostIn" />
+      <wsdl:output message="tns:getCourseOfferingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findStudent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">search for a Student</wsdl:documentation>
+      <wsdl:input message="tns:findStudentHttpPostIn" />
+      <wsdl:output message="tns:findStudentHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStudent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get a Student object</wsdl:documentation>
+      <wsdl:input message="tns:getStudentHttpPostIn" />
+      <wsdl:output message="tns:getStudentHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStudentClassPerformance">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get a StudentClassPerformance object</wsdl:documentation>
+      <wsdl:input message="tns:getStudentClassPerformanceHttpPostIn" />
+      <wsdl:output message="tns:getStudentClassPerformanceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTask">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get a Task object</wsdl:documentation>
+      <wsdl:input message="tns:getTaskHttpPostIn" />
+      <wsdl:output message="tns:getTaskHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStudentTaskGrade">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">get a StudentTaskGrade object</wsdl:documentation>
+      <wsdl:input message="tns:getStudentTaskGradeHttpPostIn" />
+      <wsdl:output message="tns:getStudentTaskGradeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="changeInstructorPassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Change the instructor password</wsdl:documentation>
+      <wsdl:input message="tns:changeInstructorPasswordHttpPostIn" />
+      <wsdl:output message="tns:changeInstructorPasswordHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NewGraderInfoServiceSoap" type="tns:NewGraderInfoServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="logIn">
+      <soap:operation soapAction="http://www.radford.edu/NewGrader/logIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logOut">
+      <soap:operation soapAction="http://www.radford.edu/NewGrader/logOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveStudent">
+      <soap:operation soapAction="http://www.radford.edu/NewGrader/saveStudent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourseOfferingsList">
+      <soap:operation soapAction="http://www.radford.edu/NewGrader/getCourseOfferingsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourseList">
+      <soap:operation soapAction="http://www.radford.edu/NewGrader/getCourseList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTermList">
+      <soap:operation soapAction="http://www.radford.edu/NewGrader/getTermList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourseOffering">
+      <soap:operation soapAction="http://www.radford.edu/NewGrader/getCourseOffering" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findStudent">
+      <soap:operation soapAction="http://www.radford.edu/NewGrader/findStudent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStudent">
+      <soap:operation soapAction="http://www.radford.edu/NewGrader/getStudent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStudentClassPerformance">
+      <soap:operation soapAction="http://www.radford.edu/NewGrader/getStudentClassPerformance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTask">
+      <soap:operation soapAction="http://www.radford.edu/NewGrader/getTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStudentTaskGrade">
+      <soap:operation soapAction="http://www.radford.edu/NewGrader/getStudentTaskGrade" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeInstructorPassword">
+      <soap:operation soapAction="http://www.radford.edu/NewGrader/changeInstructorPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NewGraderInfoServiceSoap12" type="tns:NewGraderInfoServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="logIn">
+      <soap12:operation soapAction="http://www.radford.edu/NewGrader/logIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logOut">
+      <soap12:operation soapAction="http://www.radford.edu/NewGrader/logOut" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveStudent">
+      <soap12:operation soapAction="http://www.radford.edu/NewGrader/saveStudent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourseOfferingsList">
+      <soap12:operation soapAction="http://www.radford.edu/NewGrader/getCourseOfferingsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourseList">
+      <soap12:operation soapAction="http://www.radford.edu/NewGrader/getCourseList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTermList">
+      <soap12:operation soapAction="http://www.radford.edu/NewGrader/getTermList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourseOffering">
+      <soap12:operation soapAction="http://www.radford.edu/NewGrader/getCourseOffering" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findStudent">
+      <soap12:operation soapAction="http://www.radford.edu/NewGrader/findStudent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStudent">
+      <soap12:operation soapAction="http://www.radford.edu/NewGrader/getStudent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStudentClassPerformance">
+      <soap12:operation soapAction="http://www.radford.edu/NewGrader/getStudentClassPerformance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTask">
+      <soap12:operation soapAction="http://www.radford.edu/NewGrader/getTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStudentTaskGrade">
+      <soap12:operation soapAction="http://www.radford.edu/NewGrader/getStudentTaskGrade" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeInstructorPassword">
+      <soap12:operation soapAction="http://www.radford.edu/NewGrader/changeInstructorPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NewGraderInfoServiceHttpGet" type="tns:NewGraderInfoServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="logIn">
+      <http:operation location="/logIn" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logOut">
+      <http:operation location="/logOut" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourseOfferingsList">
+      <http:operation location="/getCourseOfferingsList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourseList">
+      <http:operation location="/getCourseList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTermList">
+      <http:operation location="/getTermList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourseOffering">
+      <http:operation location="/getCourseOffering" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findStudent">
+      <http:operation location="/findStudent" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStudent">
+      <http:operation location="/getStudent" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStudentClassPerformance">
+      <http:operation location="/getStudentClassPerformance" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTask">
+      <http:operation location="/getTask" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStudentTaskGrade">
+      <http:operation location="/getStudentTaskGrade" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeInstructorPassword">
+      <http:operation location="/changeInstructorPassword" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NewGraderInfoServiceHttpPost" type="tns:NewGraderInfoServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="logIn">
+      <http:operation location="/logIn" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logOut">
+      <http:operation location="/logOut" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourseOfferingsList">
+      <http:operation location="/getCourseOfferingsList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourseList">
+      <http:operation location="/getCourseList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTermList">
+      <http:operation location="/getTermList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourseOffering">
+      <http:operation location="/getCourseOffering" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findStudent">
+      <http:operation location="/findStudent" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStudent">
+      <http:operation location="/getStudent" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStudentClassPerformance">
+      <http:operation location="/getStudentClassPerformance" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTask">
+      <http:operation location="/getTask" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStudentTaskGrade">
+      <http:operation location="/getStudentTaskGrade" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeInstructorPassword">
+      <http:operation location="/changeInstructorPassword" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NewGraderInfoService">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">provides Gradebook information to any platform</wsdl:documentation>
+    <wsdl:port name="NewGraderInfoServiceSoap" binding="tns:NewGraderInfoServiceSoap">
+      <soap:address location="http://itec-web-dev04.radford.edu/EWS/NewGraderInfoService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NewGraderInfoServiceSoap12" binding="tns:NewGraderInfoServiceSoap12">
+      <soap12:address location="http://itec-web-dev04.radford.edu/EWS/NewGraderInfoService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NewGraderInfoServiceHttpGet" binding="tns:NewGraderInfoServiceHttpGet">
+      <http:address location="http://itec-web-dev04.radford.edu/EWS/NewGraderInfoService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NewGraderInfoServiceHttpPost" binding="tns:NewGraderInfoServiceHttpPost">
+      <http:address location="http://itec-web-dev04.radford.edu/EWS/NewGraderInfoService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
